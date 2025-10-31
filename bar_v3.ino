@@ -203,16 +203,16 @@ else if (pitch < -90.0f) {pitch = pitch + 180.0f;}
       bool rollOverride = false;
 
       // ---- Combined logic with roll override ----
-      if (fabs(roll) > R_DEADZONE) {
-        // ROLL MODE: both motors ON with same PWM (from roll magnitude)
-        float norm = (fabs(roll) - R_DEADZONE) / (MAX_ANGLE - R_DEADZONE);
-        norm = constrain(norm, 0.0f, 1.0f);
-        int pwm = MIN_SPEED + (int)(norm * (MAX_SPEED - MIN_SPEED));
-        pwmA = pwm;
-        pwmB = pwm;
-        rollOverride = true;
-      } else {
-        // PITCH MODE: one motor ON depending on pitch sign
+//      if (fabs(roll) > R_DEADZONE) {
+//        // ROLL MODE: both motors ON with same PWM (from roll magnitude)
+//        float norm = (fabs(roll) - R_DEADZONE) / (MAX_ANGLE - R_DEADZONE);
+//        norm = constrain(norm, 0.0f, 1.0f);
+//        int pwm = MIN_SPEED + (int)(norm * (MAX_SPEED - MIN_SPEED));
+//        pwmA = pwm;
+//        pwmB = pwm;
+//        rollOverride = true;
+//      } else {
+//        // PITCH MODE: one motor ON depending on pitch sign
         if (pitch > P_DEADZONE) {
           float norm = (pitch - P_DEADZONE) / (MAX_ANGLE - P_DEADZONE);
           norm = constrain(norm, 0.0f, 1.0f);
@@ -227,7 +227,7 @@ else if (pitch < -90.0f) {pitch = pitch + 180.0f;}
           pwmA = 0;
           pwmB = 0;
         }
-      }
+     // }
       // Then flip outputs if needed:
 if (flipped) {
     // Swap motor outputs
